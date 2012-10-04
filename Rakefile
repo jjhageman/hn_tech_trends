@@ -1,8 +1,9 @@
 #!/usr/bin/env rake
 require 'mongoid'
+require 'typhoeus'
 require 'debugger'
 
-Mongoid.load!("configs/mongoid.yml")
+Mongoid.load!("configs/mongoid.yml", :development)
 Dir[File.expand_path('../models/**/*.rb', __FILE__)].each {|f| require f}
 
 desc "Bootstrap keywords"
@@ -13,8 +14,29 @@ task :keywords do
   Keyword.delete_all
 
   keywords_file.each do |word|
-    Keyword.create(name: word)
+    Keyword.create(name: word.strip)
     print '.'
   end
   puts 'Done.'
+end
+
+desc "Update keyword stats"
+task :update_stats do
+  hydra = Typhoeus::Hydra.new
+  Keyword.all.each do |k|
+    request = Typhoeus::Request.new("http://api.thriftdb.com/api.hnsearch.com/items/_search", :params => {:q => k.name})
+    request.on_complete do |response|
+      hits = JSON.parse(response.body)['hits']
+      k.stats << Stat.new(count: hits)
+      #k.push(:counts, hits)
+      #k.pop(:counts, -1) if k.counts.size > 30
+    end
+    hydra.queue(request)
+    #response = Typhoeus::Request.get("http://api.thriftdb.com/api.hnsearch.com/items/_search", :params => {:q => k.name})
+    #hits = JSON.parse(response.body)['hits']
+    #k.push(:counts, hits)
+    #k.pop(:counts, 1) if k.counts.size > 30
+    print '.'
+  end
+  hydra.run
 end

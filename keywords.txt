@@ -20,4 +20,3 @@ backbone.js
 ember.js
 hadoop
 cassandra
-

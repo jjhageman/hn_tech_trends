@@ -1,0 +1,8 @@
+<dl>
+<% @keywords.each do |k| %>
+  <dt><%= k.name %></dt>
+  <dd>Counts: <%= k.stats.map(&:count) %></dd>
+  <dd>Latest: <%= k.latest_count %></dd>
+  <dd>Trend: <%= k.trend %></dd>
+<% end %>
+</dl>
