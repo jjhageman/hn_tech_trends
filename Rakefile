@@ -2,7 +2,7 @@
 require 'mongoid'
 require 'typhoeus'
 
-Mongoid.load!("configs/mongoid.yml", :development)
+Mongoid.load!("configs/mongoid.yml", ENV['RACK_ENV'])
 Dir[File.expand_path('../models/**/*.rb', __FILE__)].each {|f| require f}
 
 desc "Bootstrap keywords"
