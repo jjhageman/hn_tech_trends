@@ -1,7 +1,6 @@
 #!/usr/bin/env rake
 require 'mongoid'
 require 'typhoeus'
-require 'debugger'
 
 Mongoid.load!("configs/mongoid.yml", :development)
 Dir[File.expand_path('../models/**/*.rb', __FILE__)].each {|f| require f}
