@@ -5,6 +5,8 @@ require 'debugger'
 
 ENV['RACK_ENV'] = 'development' unless ENV['MONGOLAB_URI']
 
+ENV['RACK_ENV'] = 'development' unless ENV['MONGOLAB_URI']
+
 Mongoid.load!("configs/mongoid.yml", ENV['RACK_ENV'])
 Dir[File.expand_path('../models/**/*.rb', __FILE__)].each {|f| require f}
 
