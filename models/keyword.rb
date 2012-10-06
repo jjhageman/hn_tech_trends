@@ -9,6 +9,12 @@ class Keyword
   field :name, type: String
   field :counts, type: Array
 
+  def self.to_chart(keywords)
+    keywords.map do |k|
+      {}
+    end
+  end
+
   def latest_count
     stats.last.try(:count)
   end

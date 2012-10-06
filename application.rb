@@ -7,6 +7,8 @@ class Application < Sinatra::Base
   Mongoid.load!("configs/mongoid.yml")
   get '/' do
     @keywords = Keyword.all.desc(:counts)
+    @keyword_names = @keywords.map(&:name)
+    @keywords_chart_data = Keyword.to_chart(@keywords)
     erb :index
   end
 
