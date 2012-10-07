@@ -1,6 +1,7 @@
 #!/usr/bin/env rake
 require 'mongoid'
 require 'typhoeus'
+require 'debugger'
 
 ENV['RACK_ENV'] = 'development' unless ENV['MONGOLAB_URI']
 
@@ -24,20 +25,19 @@ end
 desc "Update keyword stats"
 task :update_stats do
   hydra = Typhoeus::Hydra.new
+  s=Snapshot.new(date: Time.now)
   Keyword.all.each do |k|
-    request = Typhoeus::Request.new("http://api.thriftdb.com/api.hnsearch.com/items/_search", :params => {:q => k.name})
+    request = Typhoeus::Request.new("http://api.thriftdb.com/api.hnsearch.com/items/_search", :params => {q: k.name, limit: 0})
     request.on_complete do |response|
       hits = JSON.parse(response.body)['hits']
-      k.stats << Stat.new(count: hits)
-      #k.push(:counts, hits)
-      #k.pop(:counts, -1) if k.counts.size > 30
+      count_yesterday = k.stats.desc(:created_at).first.count
+      diff = hits-count_yesterday
+      s.terms << Term.new(name: k.name, count: hits, daily_count: diff)
+      k.stats << Stat.new(count: hits, daily_count: diff)
     end
     hydra.queue(request)
-    #response = Typhoeus::Request.get("http://api.thriftdb.com/api.hnsearch.com/items/_search", :params => {:q => k.name})
-    #hits = JSON.parse(response.body)['hits']
-    #k.push(:counts, hits)
-    #k.pop(:counts, 1) if k.counts.size > 30
     print '.'
   end
   hydra.run
+  s.save
 end

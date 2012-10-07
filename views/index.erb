@@ -1,4 +1,4 @@
-<div id="hn-graph" data-keywords="<%= @keywords.to_json %>" data-names="<%= @keyword_names.to_json %>"></div>
+<div id="hn-graph" data-keywords='<%= @keywords_chart_data.to_json %>' data-names='<%= @keyword_names.to_json %>'></div>
 <dl>
 <% @keywords.each do |k| %>
   <dt><%= k.name %></dt>

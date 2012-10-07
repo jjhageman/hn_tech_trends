@@ -1,10 +1,9 @@
-require 'mongoid'
-
-class Stat
+class Term
   include Mongoid::Document
-  include Mongoid::Timestamps::Created
 
-  embedded_in :keyword
+  embedded_in :snapshot
+
+  field :name, type: String
   field :count, type: Integer
   field :daily_count, type: Integer
 end
