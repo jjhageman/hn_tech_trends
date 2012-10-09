@@ -22,6 +22,40 @@ task :keywords do
   puts 'Done.'
 end
 
+desc "Backfill missing keywords and snapshots data"
+task :backfill => [:backfill_keywords, :backfill_snapshots]
+
+desc "Backfill empty keywords datapoints"
+task :backfill_keywords do
+  Keyword.all.each do |k|
+    ordered_stats = k.stats.asc(:created_at)
+    first_stat = ordered_stats[0]
+    first_stat.update_attribute(:daily_count, 0) unless first_stat.daily_count
+    ordered_stats[1..-1].each_with_index do |s,i|
+      s.update_attribute(:daily_count, (s.count - ordered_stats[i].count)) unless s.daily_count
+      print '.'
+    end
+  end
+  puts 'Done.'
+end
+
+desc "Backfill missing snapshots dates"
+task :backfill_snapshots do
+  keyword_dates = Keyword.first.stats.map{|s| s.created_at.to_date}.uniq
+  snap_dates = Snapshot.all.map(&:date)
+  missing_dates = keyword_dates - snap_dates
+  missing_dates.each do |d|
+    s = Snapshot.new(date: d)
+    Keyword.all.each do |k|
+      stat = k.stats.where(:created_at.gt => d.beginning_of_day, :created_at.lt => d.end_of_day).last
+      s.terms.build(name: k.name, count: stat.count, daily_count: stat.daily_count)
+      print '.'
+    end
+    s.save
+  end
+  puts 'Done.'
+end
+
 desc "Update keyword stats"
 task :update_stats do
   hydra = Typhoeus::Hydra.new

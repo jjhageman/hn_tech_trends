@@ -6,9 +6,10 @@ Dir[File.expand_path('../models/**/*.rb', __FILE__)].each {|f| require f}
 class Application < Sinatra::Base
   Mongoid.load!("configs/mongoid.yml")
   get '/' do
-    @keywords = Keyword.all.desc(:counts)
-    @keyword_names = @keywords.map(&:name)
-    @keywords_chart_data = Keyword.to_chart(@keywords)
+    @term_names = Snapshot.first.terms.map(&:name)
+    @snapshots = Snapshot.all.asc(:date)
+    @snapshots_chart_data = Snapshot.to_chart(@snapshots)
+    @keywords = Keyword.trending
     erb :index
   end
 

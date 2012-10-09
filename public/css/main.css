@@ -92,8 +92,9 @@ textarea {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
-
-
+#content { padding: 1em; }
+#hn-graph { width: 70%; height: 100%;  margin-top: 2em;}
+#trending { float:right; }
 
 
 

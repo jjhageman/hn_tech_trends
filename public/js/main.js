@@ -7,10 +7,11 @@ $(document).ready(function() {
   }
   Morris.Line({
     element: 'hn-graph',
-    data: $('#hn-graph').data('keywords'),
+    data: $('#hn-graph').data('snapshots'),
     xkey: 'date',
     ykeys: $('#hn-graph').data('names'),
     labels: $('#hn-graph').data('names'),
-    lineColors: colors
+    lineColors: colors,
+    lineWidth: 2
   });
 });

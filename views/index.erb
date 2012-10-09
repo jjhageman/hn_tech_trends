@@ -1,9 +1,11 @@
-<div id="hn-graph" data-keywords='<%= @keywords_chart_data.to_json %>' data-names='<%= @keyword_names.to_json %>'></div>
-<dl>
+<div id="content">
+<dl id="trending">
 <% @keywords.each do |k| %>
   <dt><%= k.name %></dt>
-  <dd>Counts: <%= k.stats.map(&:count) %></dd>
-  <dd>Latest: <%= k.latest_count %></dd>
+  <dd>Counts: <%= k.stats.map(&:daily_count) %></dd>
+  <dd>Latest: <%= k.latest_daily_count %></dd>
   <dd>Trend: <%= k.trend %></dd>
 <% end %>
 </dl>
+<div id="hn-graph" data-snapshots='<%= @snapshots_chart_data.to_json %>' data-names='<%= @term_names.to_json %>'></div>
+</div>
