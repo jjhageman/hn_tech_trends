@@ -2,6 +2,7 @@ class Snapshot
   include Mongoid::Document
 
   embeds_many :terms
+  index "terms.category" => 1
 
   field :date, type: Date
 

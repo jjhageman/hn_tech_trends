@@ -79,9 +79,9 @@ task :update_stats do
     request = Typhoeus::Request.new("http://api.thriftdb.com/api.hnsearch.com/items/_search", :params => {q: k.name, limit: 0})
     request.on_complete do |response|
       hits = JSON.parse(response.body)['hits']
-      count_yesterday = k.stats.desc(:created_at).first.count
+      count_yesterday = k.stats.exists? ? k.stats.desc(:created_at).first.count : 0
       diff = hits-count_yesterday
-      s.terms << Term.new(name: k.name, count: hits, daily_count: diff)
+      s.terms << Term.new(name: k.name, category: k.category, count: hits, daily_count: diff)
       k.stats << Stat.new(count: hits, daily_count: diff)
     end
     hydra.queue(request)
