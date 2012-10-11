@@ -1,6 +1,5 @@
 require 'mongoid'
 require 'debugger'
-require 'set'
 
 class Keyword
   include Mongoid::Document
