@@ -22,10 +22,24 @@ task :keywords do
   puts 'Done.'
 end
 
+desc "Update categories and keywords"
+task :update_keyword_categories do
+  categories = YAML.load(File.open('configs/keywords.yml'))
+  categories.each do |c,k|
+    k.each do |key|
+      kw = Keyword.find_or_initialize_by(name: key)
+      kw.category = c
+      kw.save
+      print '.'
+    end
+  end
+  puts 'Done.'
+end
+
 desc "Backfill missing keywords and snapshots data"
 task :backfill => [:backfill_keywords, :backfill_snapshots]
 
-desc "Backfill empty keywords datapoints"
+desc "Backfill keywords with missing daily counts"
 task :backfill_keywords do
   Keyword.all.each do |k|
     ordered_stats = k.stats.asc(:created_at)
@@ -56,6 +70,7 @@ task :backfill_snapshots do
   puts 'Done.'
 end
 
+# http://api.thriftdb.com/api.hnsearch.com/items/_search?q=chrome&filter[fields][create_ts]=[2012-10-02T00:00:00Z%20TO%202012-10-03T00:00:00Z]
 desc "Update keyword stats"
 task :update_stats do
   hydra = Typhoeus::Hydra.new

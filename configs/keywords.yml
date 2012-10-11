@@ -1,0 +1,108 @@
+languages:
+  - jquery
+  - mysql
+  - django
+  - javascript
+  - php
+  - mongo
+  - apache
+  - node.js
+  - python
+  - css
+  - ember.js
+  - hadoop
+  - cassandra
+  - ajax
+  - asp.net
+  - redis
+  - c#
+  - json
+  - rails
+  - backbone.js
+  - java
+  - ruby
+  - chef
+  - puppet
+
+hosting:
+  - heroku
+  - aws
+  - ec2
+  - rackspace
+  - slicehost
+  - hostgator
+  - dreamhost
+  - joyent
+  - google app engine
+  - linode
+  - media temple
+  - engine yard
+
+browsers:
+  - chrome
+  - chrome for android
+  - firefox
+  - firefox mobile
+  - safari
+  - safari mobile
+  - opera
+  - opera mobile
+  - internet explorer
+  - internet explorer mobile
+  - ie6
+  - ie9
+  - konqueror
+
+devices:
+  - iphone
+  - ipad
+  - android
+  - nexus
+  - kindle
+  - nook
+  - kobo
+  - sony reader
+  - blackberry
+  - palm
+
+payment:
+  - paypal
+  - stripe
+  - braintree
+  - bitcoin
+  - square
+  - dwolla
+
+operating_systems:
+  - ios6
+  - osx
+  - linux
+  - unix
+  - windows
+
+buzzwords:
+  - pivot
+  - cloud
+  - growth
+  - disrupt
+  - zuckerberg
+  - mvp
+  - gamification
+  - guru
+  - ninja
+  - rockstar
+  - 2.0
+  - low hanging fruit
+  - bleeding edge
+  - critical mass
+  - disintermediate
+  - synergy
+  - freemium
+  - game changer
+  - stealth
+  - traction
+  - bootstrap
+  - angel
+  - hyperlocal
+  - monetize
+  - crowdsource
