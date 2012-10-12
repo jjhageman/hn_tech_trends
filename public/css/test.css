@@ -101,6 +101,50 @@ body.company div.intro span.title span{display:block; margin:0 auto; width:90px;
 body.company div.intro span.description{display:block; margin:0 auto; font-family:"MuseoSlab700Italic", Arial, Helvetica, sans-serif; font-size:36px; color:#e3f5ff; letter-spacing:-1px; text-align:center; }
 body.company div.intro span.description span{ margin:0 auto; font-family:"MuseoSlab900Italic", Arial, Helvetica, sans-serif; font-size:36px;color:#fff;}
 
+ul.button-group{margin: 10px 0;}
+ul.categories li{float: left;}
+ul.categories li button {
+  background-color: #d7e5f5;
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #d7e5f5), color-stop(100%, #cbe0f5));
+  background-image: -webkit-linear-gradient(top, #d7e5f5, #cbe0f5);
+  background-image: -moz-linear-gradient(top, #d7e5f5, #cbe0f5);
+  background-image: -ms-linear-gradient(top, #d7e5f5, #cbe0f5);
+  background-image: -o-linear-gradient(top, #d7e5f5, #cbe0f5);
+  background-image: linear-gradient(top, #d7e5f5, #cbe0f5);
+  border-top: 1px solid #abbbcc;
+  border-left: 1px solid #a7b6c7;
+  border-bottom: 1px solid #a1afbf;
+  border-right: 1px solid #a7b6c7;
+  border-radius: 12px;
+  -webkit-box-shadow: inset 0 1px 0 0 white;
+  box-shadow: inset 0 1px 0 0 white;
+  color: #1a3e66;
+  font: normal 11px/1 "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;
+  padding: 6px 12px 7px;
+  text-align: center;
+  text-shadow: 0 1px 1px #fff; }
+ul.categories li button:hover {
+    background-color: #ccd9e8;
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #ccd9e8), color-stop(100%, #c1d4e8));
+    background-image: -webkit-linear-gradient(top, #ccd9e8, #c1d4e8);
+    background-image: -moz-linear-gradient(top, #ccd9e8, #c1d4e8);
+    background-image: -ms-linear-gradient(top, #ccd9e8, #c1d4e8);
+    background-image: -o-linear-gradient(top, #ccd9e8, #c1d4e8);
+    background-image: linear-gradient(top, #ccd9e8, #c1d4e8);
+    border-top: 1px solid #a1afbf;
+    border-left: 1px solid #9caaba;
+    border-bottom: 1px solid #96a3b3;
+    border-right: 1px solid #9caaba;
+    -webkit-box-shadow: inset 0 1px 0 0 #f2f2f2;
+    box-shadow: inset 0 1px 0 0 #f2f2f2;
+    color: #163659;
+    cursor: pointer; }
+ul.categories li button:active {
+    border: 1px solid #8c98a7;
+    -webkit-box-shadow: inset 0 0 4px 2px #abbccf, 0 0 1px 0 #eeeeee;
+    box-shadow: inset 0 0 4px 2px #abbccf, 0 0 1px 0 #eeeeee; }
+ul.categories li button.current { background-color: #ccc; }
+div#hn-graph{ height: 500px;}
 body.company div.leftColumn{width:710px; margin:35px 0; float:left;}
 body.company div.leftColumn h3{font-family:"ProximaNovaSemiBold", Arial, Helvetica, sans-serif; font-size:20px; color:#555; margin:11px 0 0 10px;}
 body.company div.leftColumn ul.features {margin:24px 0 0 0; float:left;}
@@ -117,7 +161,10 @@ body.company div.leftColumn div.product span.title span{display:block; width:95p
 
 div.rightColumn{width:150px; margin:35px 0 35px 40px; padding:18px 24px 24px 24px; border:1px solid #CCC; background:url(../images/form_light_background.gif) #fcfcfd; float:right;}
 div.rightColumn h3{display:block; margin:0 0 5px 0; font-family:"ProximaNovaSemiBold", Arial, Helvetica, sans-serif; font-size:20px; color:#555;}
-div.rightColumn dl#trending dt{font-family:"ProximaNovaSemiBold", Arial, Helvetica, sans-serif; font-size:18px; color:#555;}
+div.rightColumn table#trending td{font: 11px/20px "Gotham Narrow" "Helvetica Neue", Helvetica, Arial, sans-serif; padding:10px 0 10px 15px;}
+div.rightColumn table#trending td.name{font-size:13px; color:#333; padding-left:0;}
+div.rightColumn table#trending td.trend{font-weight:bold; color:#2B2;}
+div.rightColumn table#trending td.count{font-size:13px; font-weight:bold; color:#666;}
 body.company div.rightColumn div.titleContainer{height:45px; background:url(../images/form_title_background.png) no-repeat #8a969c;}
 body.company div.rightColumn div.titleContainer h3{padding:0 0 0 25px; font-family:"ProximaNovaSemiBold", Arial, Helvetica, sans-serif; font-size:20px; color:#fff; text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.2); line-height:45px;}
 body.company div.rightColumn div.priorityContainer{width:370px; height:40px; margin:0 auto; padding:18px 24px 18px 24px; background:url(../images/form_background.gif) #f8f9f9; border-bottom:1px solid #e0e0e1;}

@@ -9,10 +9,11 @@ class Application < Sinatra::Base
 
   Mongoid.load!("configs/mongoid.yml")
   get '/' do
-    @term_names = Snapshot.first.terms.map(&:name)
+    @term_names, @categories = Snapshot.names_and_categories
+    @category = params[:category] || 'languages'
     @snapshots = Snapshot.all.asc(:date)
-    @snapshots_chart_data = Snapshot.to_chart(@snapshots)
-    @keywords = Keyword.trending
+    @snapshots_chart_data = Snapshot.to_chart(@snapshots, @category)
+    @keywords = Keyword.trending(13)
     erb :index
   end
 

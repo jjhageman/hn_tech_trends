@@ -12,6 +12,8 @@ $(document).ready(function() {
     ykeys: $('#hn-graph').data('names'),
     labels: $('#hn-graph').data('names'),
     lineColors: colors,
-    lineWidth: 2
+    lineWidth: 2,
+    hideHover: true,
+    xLabels: 'day'
   });
 });

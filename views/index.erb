@@ -1,14 +1,21 @@
 <div class="leftColumn">
   <h3>HN At a Glance</h3>
+  <ul class="button-group">
+    <% @categories.each do |c| %>
+      <li><a href="/?category=<%= c %>" class="<%= (c == @category) ? 'button primary pill' : 'button pill' %>"><%= c.capitalize %></a></li>
+    <% end %>
+  </ul>
   <div id="hn-graph" data-snapshots='<%= @snapshots_chart_data.to_json %>' data-names='<%= @term_names.to_json %>'></div>
 </div>
 <div class="rightColumn">
   <h3>Trending</h3>
-  <dl id="trending">
+  <table id="trending">
     <% @keywords.each do |k| %>
-      <dt><%= k.name %></dt>
-    <dd>Latest: <%= k.latest_daily_count %></dd>
-    <dd>Trend: <%= percentage(k.trend) %></dd>
-  <% end %>
-  </dl>
+      <tr>
+        <td class="name"><%= k.name %></td>
+        <td class="trend">+<%= percentage(k.trend) %></td>
+        <td class="count"><%= k.latest_daily_count %></td>
+      </tr>
+    <% end %>
+  </table>
 </div>
