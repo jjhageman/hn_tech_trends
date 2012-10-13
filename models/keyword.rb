@@ -3,13 +3,11 @@ require 'debugger'
 
 class Keyword
   include Mongoid::Document
-  include Mongoid::Timestamps
 
   embeds_many :stats
 
   field :name, type: String
   field :category, type: String
-  field :counts, type: Array
 
   index({ category: 1 }, { sparse: true })
 
