@@ -1,5 +1,3 @@
-require 'mongoid'
-
 class Stat
   include Mongoid::Document
   include Mongoid::Timestamps  

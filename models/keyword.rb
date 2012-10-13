@@ -1,6 +1,3 @@
-require 'mongoid'
-require 'debugger'
-
 class Keyword
   include Mongoid::Document
 

@@ -6,4 +6,3 @@ gem 'sinatra'
 gem "sinatra-support", require: "sinatra/support"
 gem 'mongoid'
 gem 'typhoeus'
-gem 'debugger'
