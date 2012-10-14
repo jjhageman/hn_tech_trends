@@ -10,14 +10,21 @@ class Keyword
 
   validates :name, uniqueness: true
 
+  def self.categories
+    all.map(&:category).uniq
+  end
+
   def self.trending(size=10)
-    all.sort{|a,b| b.trend <=> a.trend}[0..size-1]
+    all.sort do |a,b|
+      b.trend <=> a.trend
+    end[0..size-1]
   end
 
   def trend
     return 0 if stats.size < 2
     rvals = stats.asc(:daily_count).map(&:daily_count).compact
     rvals = rvals.drop_while{|i|i<=0}
+    return 0 if rvals.empty?
     (rvals.last - rvals.first).to_f / rvals.first
   end
  

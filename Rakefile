@@ -2,6 +2,7 @@
 require 'mongoid'
 require 'typhoeus'
 require 'date'
+require 'debugger'
 
 ENV['RACK_ENV'] = 'development' unless ENV['MONGOLAB_URI']
 
@@ -77,16 +78,26 @@ task :backfill_snapshots do
   puts 'Done.'
 end
 
+desc "Take snapshots for a range of dates. Ex: rake shapshot_range[2012-1-25,2012-1-30]"
+task :snapshot_range, :beginning_date, :end_date do |t,args|
+  beginning_date = Date.parse(args[:beginning_date])
+  end_date = Date.parse(args[:end_date])
+  (beginning_date..end_date).each do |d|
+    Rake::Task['snapshot'].reenable
+    Rake::Task['snapshot'].invoke(d.strftime('%Y-%m-%d'))
+  end
+end
+
 desc "Take snapshot. Ex: rake shapshot[2012-1-25]"
 task :snapshot, :date do |t, args|
   date = Date.parse(args[:date])
+  beg_range = date
+  end_range = date+1
   puts "Taking snapshot for #{date}"
   hydra = Typhoeus::Hydra.new
   snap = Snapshot.find_or_initialize_by(date: date)
   Keyword.all.each do |k|
-    beg_range = date
-    end_range = date+1
-    key = k.name.gsub(/\s/, '%20')
+    key = Typhoeus::Utils.escape(k.name)
     query = "http://api.thriftdb.com/api.hnsearch.com/items/_search?q=#{key}&limit=0&filter[fields][create_ts]=[#{beg_range}T00:00:00Z%20TO%20#{end_range}T00:00:00Z]"
     req = Typhoeus::Request.new(query)
     req.on_complete do |res|
@@ -94,25 +105,34 @@ task :snapshot, :date do |t, args|
       if snap.persisted?
         t = snap.terms.find_or_initialize_by(name: k.name)
         if t.persisted?
-          t.update_attribute(daily_count: hits)
+          if t.category
+            t.update_attribute(:daily_count, hits)
+          else
+            t.update_attributes(daily_count: hits, category: k.category)
+          end
         else
           t.daily_count = hits
           t.category = k.category
           t.save
         end
       else
-        snap.terms << Term.build(name: k.name, category: k.category, daily_count: hits)
+        snap.terms.build(name: k.name, category: k.category, daily_count: hits)
         snap.save
       end
 
-      stat = k.stats.where(date: d).first
+      stat = k.stats.where(date: date).first
       if stat
         stat.update_attribute(:daily_count, hits)
       else
-        k.stats.create(daily_count: hits)
+        k.stats.create(date: date, daily_count: hits)
       end
+      print '*'
     end
+    hydra.queue(req)
+    print '.'
   end
+  hydra.run
+  puts 'Done.'
 end
 
 def get_total_hits(keyword, date=Date.today)
@@ -124,7 +144,7 @@ end
 # http://api.thriftdb.com/api.hnsearch.com/items/_search?q=chrome&filter[fields][create_ts]=[2012-10-02T00:00:00Z%20TO%202012-10-03T00:00:00Z]
 desc "Update keyword stats"
 task :update_stats do
-  date = Date.today-1
+  date = Date.today
   hydra = Typhoeus::Hydra.new
   s=Snapshot.new(date: date)
   Keyword.all.each do |k|

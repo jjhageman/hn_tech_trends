@@ -6,21 +6,16 @@ class Snapshot
 
   field :date, type: Date
 
-  def self.to_chart(snapshots, category)
-    snapshots.collect do |snap|
+  def self.to_chart(category)
+    term_names=[]
+    chart_data = all.collect do |snap|
       h = {date: snap.date}
-      snap.terms.where(category: category).each {|t| h[t.name] = t.daily_count }
+      snap.terms.where(category: category).each do |t|
+        term_names << t.name
+        h[t.name] = t.daily_count
+      end
       h
     end
-  end
-
-  def self.names_and_categories
-    term_names=[]
-    categories=[]
-    last.terms.collect do |t|
-      term_names << t.name
-      categories << t.category
-    end
-    [term_names, categories.uniq]
+    [term_names.uniq, chart_data]
   end
 end
