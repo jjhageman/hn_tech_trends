@@ -2,7 +2,6 @@
 require 'mongoid'
 require 'typhoeus'
 require 'date'
-require 'debugger'
 
 ENV['RACK_ENV'] = 'development' unless ENV['MONGOLAB_URI']
 
