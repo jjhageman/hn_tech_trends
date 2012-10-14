@@ -1,0 +1,68 @@
+@charset "UTF-8";
+
+/*** reset ***/
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td { margin:0; padding:0;}
+table {	border-collapse:collapse;border-spacing:0;}
+fieldset,img { border:0;}
+address,caption,cite,code,dfn,em,strong,th,var {font-style:normal;font-weight:normal;}
+ol,ul {list-style:none;}
+caption,th {text-align:left;}
+h1,h2,h3,h4,h5,h6 {font-size:100%;font-weight:normal;}
+q:before,q:after {content:'';}
+abbr,acronym { border:0;}
+
+body{margin:0; padding:0; background: url(../images/footer_dark_background.gif) #1e2021; color:#555; font-family:"OpenSansRegular", Arial, Helvetica, sans-serif; font-size:13px;}
+div.container{margin:0 auto; position:relative; width:950px;}
+a{color:#5188a9; text-decoration:none;-webkit-transition: all .2s ease-out; -moz-transition: all .2s ease-out; -ms-transition: all .2s ease-out; -o-transition: all .2s ease-out; transition: all .2s ease-out; }
+a:hover{-webkit-transition: all .2s ease-out; -moz-transition: all .2s ease-out; -ms-transition: all .2s ease-out; -o-transition: all .2s ease-out; transition: all .2s ease-out;}
+.logoText{display:block; text-indent:-9999em;}
+
+/*** header ***/
+#header{width:100%; height:49px; background:url(../images/header_background.gif); border-bottom:1px solid #303335;}
+#header h1{float:left; margin: 9px 0;}
+#header h1 a{display:block; width:295px; height:25px; background:url(../images/HNTrends_logo.png) no-repeat; opacity: 0.9; filter: alpha(opacity=90);}
+#header h1 a:hover{opacity: 1;}
+
+/*** content ***/
+
+#content{width:100%; background:url(../images/grey_background.gif) #f2f3f4; min-height:500px;}
+ul.button-group{margin: 10px 0;}
+#hn-graph{ height: 500px;}
+.leftColumn{width:710px; margin:35px 0; float:left;}
+.leftColumn h3{font-family:"ProximaNovaSemiBold", Arial, Helvetica, sans-serif; font-size:20px; color:#555; margin:11px 0 0 10px;}
+
+.rightColumn{width:150px; margin:35px 0 35px 40px; padding:18px 20px 20px 20px; border:1px solid #CCC; background:url(../images/form_light_background.gif) #fcfcfd; float:right;}
+.rightColumn h3{display:block; margin:0 0 5px 0; font-family:"ProximaNovaSemiBold", Arial, Helvetica, sans-serif; font-size:18px; color:#555;}
+.rightColumn table#trending td{font: 11px/20px "Gotham Narrow" "Helvetica Neue", Helvetica, Arial, sans-serif; padding:10px 0 10px 15px;}
+.rightColumn table#trending td.name{font-size:13px; color:#333; padding-left:0;}
+.rightColumn table#trending td.trend{font-weight:bold; color:#2B2;}
+.rightColumn table#trending td.count{font-size:13px; font-weight:bold; color:#666;}
+
+.about{width:100%; padding: 0 0 20px 0; background:url(../images/light_grey_background.gif) 0 13px repeat-x; text-align:center;}
+.about p{margin:18px 0 0 0; display:block; font-family:"ProximaNovaRegular", Arial, Helvetica, sans-serif; font-size:15px; color:#777; line-height:21px; padding-left:5px; text-align:left;}
+.about div.titleContainer{margin: 0 0 50px 0; height:25px; vertical-align: middle}
+.about div.ribbon{display:inline-block; position:relative; padding:0 8px;}
+.about span.title{display:inline-block; margin:0 auto;  padding:0 15px; height:25px;font-family:"MuseoSlab700Italic", Arial, Helvetica, sans-serif; font-size:14px; color:#fff; text-align:center; line-height:25px; text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.2); background:url(../images/blue_ribbon_background.gif) repeat-x; vertical-align: middle }
+.about div.ribbon:before {content: "";  position:absolute; left:1px; display:inline-block; margin:0; padding:0; width: 8px; height: 25px; background:url(../images/blue_ribbon_left.png) no-repeat; font-family:"MuseoSlab700Italic", Arial, Helvetica, sans-serif; font-size:14px; color:#fff; text-align:center; line-height:25px; text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.2); }
+.about div.ribbon:after {content: ""; position:absolute; right:0px; display:inline-block; margin:0; padding:0; width: 8px; height: 25px; background:url(../images/blue_ribbon_right.png) no-repeat; font-family:"MuseoSlab700Italic", Arial, Helvetica, sans-serif; font-size:14px; color:#fff; text-align:center; line-height:25px; text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.2); }
+
+/*** footer ***/
+#footer{width:100%; height:130px; padding:5px 0 0 0; background:url(../images/footer_color.png) repeat-x; text-align: center;}
+#footer p{margin: 20px 0; color:#6b767a; font-size:11px; line-height:11px;}
+
+/*** clearfix ***/
+.clearfix:after {content: ".";display: block;clear: both;visibility: hidden;line-height: 0;height: 0;}
+.clearfix {display: inline-block;}
+html[xmlns] .clearfix {display: block;}
+* html .clearfix {height: 1%;}
+
+/*** fonts ***/
+@font-face { font-family: 'MuseoSlab500Italic'; src: url('../fonts/museo_slab_500italic.eot'); src: url('../fonts/museo_slab_500italic.eot?#iefix') format('embedded-opentype'), url('../fonts/museo_slab_500italic.woff') format('woff'), url('../fonts/museo_slab_500italic.ttf') format('truetype'), url('../fonts/museo_slab_500italic.svg#MuseoSlab500Italic') format('svg'); font-weight: normal; font-style: normal; }
+@font-face { font-family: 'MuseoSlab700Italic'; src: url('../fonts/museo_slab_700italic.eot'); src: url('../fonts/museo_slab_700italic.eot?#iefix') format('embedded-opentype'), url('../fonts/museo_slab_700italic.woff') format('woff'), url('../fonts/museo_slab_700italic.ttf') format('truetype'), url('../fonts/museo_slab_700italic.svg#MuseoSlab700Regular') format('svg'); font-weight: normal; font-style: normal; }
+@font-face { font-family: 'MuseoSlab900Italic'; src: url('../fonts/museo_slab_700italic.eot'); src: url('../fonts/museo_slab_700italic.eot?#iefix') format('embedded-opentype'), url('../fonts/museo_slab_700italic.woff') format('woff'), url('../fonts/museo_slab_700italic.ttf') format('truetype'), url('../fonts/museo_slab_700italic.svg#MuseoSlab700Regular') format('svg'); font-weight: normal; font-style: normal; }
+@font-face { font-family: 'ProximaNovaRegular'; src: url('../fonts/proximanova-regular.eot'); src: url('../fonts/proximanova-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/proximanova-regular.woff') format('woff'), url('../fonts/proximanova-regular.ttf') format('truetype'), url('../fonts/proximanova-regular.svg#ProximaNovaRegular') format('svg'); font-weight: normal; font-style: normal; }
+@font-face { font-family: 'ProximaNovaSemiBold'; src: url('../fonts/proximanova-semibold.eot'); src: url('../fonts/proximanova-semibold.eot?#iefix') format('embedded-opentype'), url('../fonts/proximanova-semibold.woff') format('woff'), url('../fonts/proximanova-semibold.ttf') format('truetype'), url('../fonts/proximanova-semibold.svg#ProximaNovaLtBold') format('svg'); font-weight: normal; font-style: normal; }
+@font-face { font-family: 'ProximaNovaBold'; src: url('../fonts/proximanova-bold.eot'); src: url('../fonts/proximanova-bold.eot?#iefix') format('embedded-opentype'), url('../fonts/proximanova-bold.woff') format('woff'), url('../fonts/proximanova-bold.ttf') format('truetype'), url('../fonts/proximanova-bold.svg#ProximaNovaRgBold') format('svg'); font-weight: normal; font-style: normal; }
+@font-face { font-family: 'OpenSansRegular'; src: url('../fonts/opensans-regular.eot'); src: url('../fonts/opensans-regular.eot?#iefix') format('embedded-opentype'), url('../fonts/opensans-regular.woff') format('woff'), url('../fonts/opensans-regular.ttf') format('truetype'), url('../fonts/opensans-regular.svg#OpenSansRegular') format('svg'); font-weight: normal; font-style: normal; }
+@font-face { font-family: 'OpenSansBold'; src: url('../fonts/opensans-bold.eot'); src: url('../fonts/opensans-bold.eot?#iefix') format('embedded-opentype'), url('../fonts/opensans-bold.woff') format('woff'), url('../fonts/opensans-bold.ttf') format('truetype'), url('../fonts/opensans-bold.svg#OpenSansBold') format('svg'); font-weight: normal; font-style: normal; }
+@font-face { font-family: 'OpenSansItalic'; src: url('../fonts/opensans-italic.eot'); src: url('../fonts/opensans-italic.eot?#iefix') format('embedded-opentype'), url('../fonts/opensans-italic.woff') format('woff'), url('../fonts/opensans-italic.ttf') format('truetype'), url('../fonts/opensans-italic.svg#OpenSansItalic') format('svg'); font-weight: normal; font-style: normal; }
