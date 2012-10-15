@@ -1,5 +1,5 @@
 <div class="leftColumn">
-  <h3>HN At a Glance</h3>
+  <h3>HN at a Glance</h3>
   <ul class="button-group">
     <% @categories.each do |c| %>
       <li><a href="/?category=<%= c %>" class="<%= (c == @category) ? 'button primary pill' : 'button pill' %>"><%= c.capitalize %></a></li>

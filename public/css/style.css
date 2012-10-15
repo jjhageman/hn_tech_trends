@@ -18,9 +18,9 @@ a:hover{-webkit-transition: all .2s ease-out; -moz-transition: all .2s ease-out;
 .logoText{display:block; text-indent:-9999em;}
 
 /*** header ***/
-#header{width:100%; height:49px; background:url(../images/header_background.gif); border-bottom:1px solid #303335;}
+#header{width:100%; height:49px; background:url(../images/header_bg.png); border-bottom:1px solid #303335;}
 #header h1{float:left; margin: 9px 0;}
-#header h1 a{display:block; width:295px; height:25px; background:url(../images/HNTrends_logo.png) no-repeat; opacity: 0.9; filter: alpha(opacity=90);}
+#header h1 a{display:block; width:295px; height:25px; background:url(../images/hn_trends_logo2.png) no-repeat; opacity: 0.9; filter: alpha(opacity=90);}
 #header h1 a:hover{opacity: 1;}
 
 /*** content ***/
