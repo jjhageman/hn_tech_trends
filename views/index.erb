@@ -10,6 +10,11 @@
 <div class="rightColumn">
   <h3>Recently Trending</h3>
   <table id="trending">
+    <thead>
+      <tr>
+        <th>Term</th><th>Growth</th><th>Count</th>
+      </tr>
+    </thead>
     <% @keywords.each do |k| %>
       <tr>
         <td class="name"><%= k.name %></td>

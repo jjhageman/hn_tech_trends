@@ -22,7 +22,8 @@ class Keyword
 
   def trend
     return 0 if stats.size < 2
-    rvals = stats.asc(:daily_count).map(&:daily_count).compact
+    latest = stats.desc(:date).limit(14).to_a
+    rvals = latest.map(&:daily_count).compact.sort
     rvals = rvals.drop_while{|i|i<=0}
     return 0 if rvals.empty?
     (rvals.last - rvals.first).to_f / rvals.first

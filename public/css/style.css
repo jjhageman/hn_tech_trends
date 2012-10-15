@@ -31,10 +31,13 @@ ul.button-group{margin: 10px 0;}
 .leftColumn{width:710px; margin:35px 0; float:left;}
 .leftColumn h3{font-family:"ProximaNovaSemiBold", Arial, Helvetica, sans-serif; font-size:20px; color:#555; margin:11px 0 0 10px;}
 
-.rightColumn{width:150px; margin:35px 0 35px 40px; padding:18px 20px 20px 20px; border:1px solid #CCC; background:url(../images/form_light_background.gif) #fcfcfd; float:right;}
-.rightColumn h3{display:block; margin:0 0 5px 0; font-family:"ProximaNovaSemiBold", Arial, Helvetica, sans-serif; font-size:18px; color:#555;}
-.rightColumn table#trending td{font: 11px/20px "Gotham Narrow" "Helvetica Neue", Helvetica, Arial, sans-serif; padding:10px 0 10px 15px;}
-.rightColumn table#trending td.name{font-size:13px; color:#333; padding-left:0;}
+.rightColumn{width:190px; margin:35px 0 35px 40px; border:1px solid #CCC; background:url(../images/form_light_background.gif) #fcfcfd; float:right;}
+.rightColumn h3{background:url(../images/form_title_background.png) no-repeat #8a969c;display:block; margin:0 auto; padding: 15px; font-family:"ProximaNovaSemiBold", Arial, Helvetica, sans-serif; font-size:18px; color:#FFF; text-align: center;}
+.rightColumn table#trending{width: 100%;}
+.rightColumn table#trending thead{background:url(../images/form_background.gif) #f8f9f9; border-bottom:1px solid #e0e0e1;}
+.rightColumn table#trending th{padding:10px 0 10px 7px;}
+.rightColumn table#trending td{font: 11px/20px "Gotham Narrow" "Helvetica Neue", Helvetica, Arial, sans-serif; padding:10px 0 10px 16px;}
+.rightColumn table#trending td.name{font-size:13px; color:#333;}
 .rightColumn table#trending td.trend{font-weight:bold; color:#2B2;}
 .rightColumn table#trending td.count{font-size:13px; font-weight:bold; color:#666;}
 
