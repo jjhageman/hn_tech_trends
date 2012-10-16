@@ -147,7 +147,7 @@ task :update_stats do
   hydra = Typhoeus::Hydra.new
   s=Snapshot.new(date: date)
   Keyword.all.each do |k|
-    key = k.name.gsub(/\s/, '%20')
+    key = Typhoeus::Utils.escape(k.name)
     query = "http://api.thriftdb.com/api.hnsearch.com/items/_search?q=#{key}&limit=0&filter[fields][create_ts]=[#{date-1}T00:00:00Z%20TO%20#{date}T00:00:00Z]"
     request = Typhoeus::Request.new query
     request.on_complete do |response|

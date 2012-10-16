@@ -13,7 +13,7 @@ class Application < Sinatra::Base
   get '/' do
     last_snap = Snapshot.desc(:date).first.date
     last_modified last_snap
-    expires last_snap + 24*60*60, :public, :must_revalidate, :max_age => 1800
+    expires last_snap + 24*60*60, :public, :must_revalidate
     @category = params[:category] || 'languages'
     @categories = Keyword.categories
     @term_names, @snapshots_chart_data = Snapshot.to_chart(@category)
