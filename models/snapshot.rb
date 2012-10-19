@@ -8,8 +8,7 @@ class Snapshot
 
   def self.to_chart(category)
     term_names=[]
-    chart_data=[]
-    all.desc(:date).limit(30).collect do |snap|
+    chart_data = all.desc(:date).limit(30).collect do |snap|
       h = {date: snap.date}
       snap.terms.where(category: category).each do |t|
         term_names << t.name
