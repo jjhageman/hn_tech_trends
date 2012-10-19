@@ -3,7 +3,7 @@ $(document).ready(function() {
   colors = []
   len = terms.length
   for (var i = 0; i < len; i++) {
-    colors.push('#'+Math.floor(Math.random()*16777215).toString(16));
+    colors.push("#"+(function(a,b){while(a--){b+=""+(~~(Math.random()*16)).toString(16);} return b;})(6,""));
   }
   Morris.Line({
     element: 'hn-graph',
@@ -13,6 +13,7 @@ $(document).ready(function() {
     labels: $('#hn-graph').data('names'),
     lineColors: colors,
     lineWidth: 2,
+    pointSize: 2,
     hideHover: true,
     xLabels: 'day'
   });
